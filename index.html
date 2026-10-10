@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🩰 CoCo Focus - Aesthetic Pomodoro</title>
+  
+  <!-- Google Fonts: Quicksand & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    :root {
+      --bg-pink: #ffeef2;
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --primary-pink: #f8a5c2;
+      --primary-hover: #f382a7;
+      --soft-neutral: #f4ece1;
+      --text-dark: #634852;
+      --text-muted: #a38590;
+      --accent-shadow: rgba(248, 165, 194, 0.25);
+      --ring-bg: #fde2eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: 'Quicksand', 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #ffeef2 0%, #fff6f8 50%, #f7f0fb 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fixed ambient background emojis - NO motion/animations */
+    .bg
