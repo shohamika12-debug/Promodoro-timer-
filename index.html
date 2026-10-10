@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoCo Focus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Pomodoro Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-gradient: linear-gradient(180deg, #FFF5F7 0%, #FFEBF0 50%, #FFF0F5 100%);
             --card-bg: #FFFFFF;
-            --primary: #FF9EAA;
+            --primary-pink: #FFA6B9;
+            --primary-hover: #FF92A8;
             --text-dark: #5A4A49;
             --text-muted: #B3A3A2;
             --accent-pink: #FFF0F3;
             --accent-border: #FFD6E0;
+            --soft-btn-bg: #FFEBF0;
             --shadow: 0 20px 40px rgba(255, 182, 193, 0.2);
         }
 
@@ -21,7 +23,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Nunito', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -45,7 +47,7 @@
             position: relative;
         }
 
-        /* Top Bar with Icon-Only Settings Button */
+        /* Top Bar with Pink Settings Button */
         .top-bar {
             width: 100%;
             display: flex;
@@ -54,13 +56,13 @@
         }
 
         .settings-icon-btn {
-            background: var(--card-bg);
+            background: var(--soft-btn-bg);
             border: 2px solid var(--accent-border);
             color: var(--text-dark);
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
             display: flex;
@@ -73,15 +75,15 @@
             transform: scale(0.92);
         }
 
-        /* Title Header */
+        /* Header Title */
         .header {
             text-align: center;
             margin-bottom: 4px;
         }
 
         .header h1 {
-            font-size: 30px;
-            font-weight: 800;
+            font-size: 28px;
+            font-weight: 900;
             color: var(--text-dark);
             letter-spacing: -0.5px;
             display: flex;
@@ -94,7 +96,7 @@
             font-size: 13px;
             color: var(--text-muted);
             margin-top: 4px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         /* Main Card */
@@ -127,7 +129,7 @@
             border: none;
             background: transparent;
             border-radius: 16px;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 13px;
             color: var(--text-muted);
             cursor: pointer;
@@ -141,7 +143,7 @@
         .mode-btn.active {
             background: var(--card-bg);
             color: var(--text-dark);
-            box-shadow: 0 4px 12px rgba(255, 158, 170, 0.2);
+            box-shadow: 0 4px 12px rgba(255, 166, 185, 0.2);
         }
 
         /* Timer Circle */
@@ -168,7 +170,7 @@
 
         .progress-bar {
             fill: none;
-            stroke: var(--primary);
+            stroke: var(--primary-pink);
             stroke-width: 10;
             stroke-linecap: round;
             stroke-dasharray: 628;
@@ -185,8 +187,8 @@
         }
 
         .time {
-            font-size: 52px;
-            font-weight: 800;
+            font-size: 54px;
+            font-weight: 900;
             color: var(--text-dark);
             letter-spacing: -1px;
             line-height: 1;
@@ -194,7 +196,7 @@
 
         .label {
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-muted);
             margin-top: 8px;
             display: flex;
@@ -235,15 +237,15 @@
             flex: 1;
             max-width: 170px;
             height: 52px;
-            background: var(--primary);
+            background: var(--primary-pink);
             color: white;
             border: none;
             border-radius: 20px;
             font-size: 16px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 158, 170, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 166, 185, 0.35);
             transition: all 0.2s ease;
         }
 
@@ -257,7 +259,7 @@
             margin: 2px 0;
         }
 
-        /* Progress Emojis - Vibrant & Clear */
+        /* Progress Section */
         .progress-section {
             display: flex;
             flex-direction: column;
@@ -298,7 +300,7 @@
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 13px;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text-dark);
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(255, 182, 193, 0.1);
@@ -307,7 +309,7 @@
             gap: 8px;
         }
 
-        /* Settings Modal Popup */
+        /* Settings Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -342,8 +344,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 800;
-            font-size: 17px;
+            font-weight: 900;
+            font-size: 18px;
             color: var(--text-dark);
         }
 
@@ -359,8 +361,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            font-size: 13px;
+            font-weight: 700;
+            font-size: 14px;
             color: var(--text-dark);
         }
 
@@ -370,14 +372,14 @@
             border-radius: 12px;
             border: 2px solid var(--accent-border);
             text-align: center;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 14px;
             outline: none;
             color: var(--text-dark);
         }
 
         .save-settings-btn {
-            background: var(--primary);
+            background: var(--primary-pink);
             color: white;
             border: none;
             padding: 12px;
@@ -393,14 +395,14 @@
 
     <div class="container">
         
-        <!-- Top Bar with Cute Settings Icon -->
+        <!-- Top Bar with Soft Pink Settings Button -->
         <div class="top-bar">
             <button class="settings-icon-btn" id="openSettings">⚙️</button>
         </div>
 
         <!-- Header -->
         <div class="header">
-            <h1>🩰🪽 CoCo Focus 🪽</h1>
+            <h1>🩰 Pomodoro Timer 🪽</h1>
             <p>Aesthetic & Distraction-Free Study Sessions</p>
         </div>
 
@@ -455,7 +457,7 @@
 
     </div>
 
-    <!-- Settings Modal Pop-up -->
+    <!-- Settings Modal -->
     <div class="modal-overlay" id="settingsModal">
         <div class="modal">
             <div class="modal-header">
