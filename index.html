@@ -46,4 +46,603 @@
     }
 
     /* Fixed ambient background emojis - NO motion/animations */
-    .bg
+    .bg-emoji {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-1 { top: 8%; left: 10%; }
+    .bg-2 { top: 12%; right: 12%; }
+    .bg-3 { bottom: 15%; left: 8%; }
+    .bg-4 { bottom: 10%; right: 10%; }
+    .bg-5 { top: 48%; left: 5%; }
+    .bg-6 { top: 50%; right: 6%; }
+
+    /* Main Container - Completely static and centered */
+    .app-container {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 440px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Card Styling */
+    .timer-card {
+      width: 100%;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 32px;
+      padding: 28px 24px;
+      box-shadow: 0 16px 36px var(--accent-shadow), 0 4px 12px rgba(0,0,0,0.03);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Mode Navigation Tabs */
+    .mode-tabs {
+      display: flex;
+      background: rgba(253, 226, 235, 0.6);
+      padding: 6px;
+      border-radius: 20px;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 26px;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 10px 8px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--text-dark);
+      box-shadow: 0 4px 12px rgba(248, 165, 194, 0.25);
+    }
+
+    /* SVG Progress Ring */
+    .timer-ring-container {
+      position: relative;
+      width: 230px;
+      height: 230px;
+      margin: 10px 0 20px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .timer-ring {
+      transform: rotate(-90deg);
+      width: 100%;
+      height: 100%;
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: var(--ring-bg);
+      stroke-width: 10;
+    }
+
+    .ring-progress {
+      fill: none;
+      stroke: var(--primary-pink);
+      stroke-width: 10;
+      stroke-linecap: round;
+      stroke-dasharray: 628.3; /* 2 * PI * 100 */
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease;
+    }
+
+    .time-display-wrapper {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .time-display {
+      font-family: 'Nunito', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .mode-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Action Controls */
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 10px;
+      margin-bottom: 22px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn-main {
+      background: var(--primary-pink);
+      color: #ffffff;
+      border: none;
+      padding: 14px 38px;
+      border-radius: 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px var(--accent-shadow);
+      transition: all 0.2s ease;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-main:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px var(--accent-shadow);
+    }
+
+    .btn-main:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: #fbf5f7;
+      border: 1.5px solid #f2dbe3;
+      color: var(--text-dark);
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #f7e6ec;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+      transform: translateY(0);
+    }
+
+    /* Session Tracker */
+    .cycle-tracker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding-top: 14px;
+      border-top: 1.5px dashed #f5dce4;
+    }
+
+    .tracker-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .tracker-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .cycle-dot {
+      font-size: 1.25rem;
+      opacity: 0.3;
+      filter: grayscale(80%);
+      transition: all 0.3s ease;
+    }
+
+    .cycle-dot.completed {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.1);
+    }
+
+    /* Audio Ambient Toggle */
+    .ambient-bar {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(248, 165, 194, 0.2);
+    }
+
+    .ambient-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Static ambient background emojis -->
+  <div class="bg-emoji bg-1">🩰</div>
+  <div class="bg-emoji bg-2">🪽</div>
+  <div class="bg-emoji bg-3">🥥</div>
+  <div class="bg-emoji bg-4">🌷</div>
+  <div class="bg-emoji bg-5">🎧</div>
+  <div class="bg-emoji bg-6">🏝️</div>
+
+  <!-- App Main Content -->
+  <div class="app-container">
+    
+    <header class="header">
+      <h1>🩰 CoCo Focus 🪽</h1>
+      <p>Aesthetic & Distraction-Free Study Sessions</p>
+    </header>
+
+    <div class="timer-card">
+      <!-- Mode Selection Tabs -->
+      <nav class="mode-tabs">
+        <button class="tab-btn active" data-mode="work" onclick="switchMode('work')">
+          🌷 Focus
+        </button>
+        <button class="tab-btn" data-mode="shortBreak" onclick="switchMode('shortBreak')">
+          🥥 Short
+        </button>
+        <button class="tab-btn" data-mode="longBreak" onclick="switchMode('longBreak')">
+          🏝️ Long
+        </button>
+      </nav>
+
+      <!-- SVG Timer Display -->
+      <div class="timer-ring-container">
+        <svg class="timer-ring" viewBox="0 0 220 220">
+          <circle class="ring-bg" cx="110" cy="110" r="100"></circle>
+          <circle class="ring-progress" id="progressRing" cx="110" cy="110" r="100"></circle>
+        </svg>
+        <div class="time-display-wrapper">
+          <div class="time-display" id="timeDisplay">25:00</div>
+          <div class="mode-label" id="modeLabel">🌷 Focus Time</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="controls">
+        <button class="btn-secondary" id="resetBtn" onclick="resetTimer()" title="Reset Timer">
+          ↺
+        </button>
+        <button class="btn-main" id="startBtn" onclick="toggleTimer()">
+          START
+        </button>
+        <button class="btn-secondary" id="skipBtn" onclick="skipSession()" title="Skip Session">
+          ➔
+        </button>
+      </div>
+
+      <!-- Session Progress Hearts/Icons -->
+      <div class="cycle-tracker">
+        <span class="tracker-title">Pomodoro Progress</span>
+        <div class="tracker-icons" id="cycleTracker">
+          <span class="cycle-dot">🩰</span>
+          <span class="cycle-dot">🪽</span>
+          <span class="cycle-dot">🌷</span>
+          <span class="cycle-dot">🥥</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ambient Sound Feature -->
+    <div class="ambient-bar">
+      <button class="ambient-btn" id="rainBtn" onclick="toggleRainSound()">
+        <span>🎧</span> Ambient Sound: <strong id="rainStatus">Off</strong>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // Timer Configurations (in seconds)
+    const MODES = {
+      work: { time: 25 * 60, label: '🌷 Focus Time', icon: '🌷' },
+      shortBreak: { time: 5 * 60, label: '🥥 Short Break', icon: '🥥' },
+      longBreak: { time: 15 * 60, label: '🏝️ Long Break', icon: '🏝️' }
+    };
+
+    let currentMode = 'work';
+    let timeLeft = MODES.work.time;
+    let totalTime = MODES.work.time;
+    let timerInterval = null;
+    let isRunning = false;
+    let completedSessions = 0;
+
+    // Web Audio Synthesizer for completion bell & rain noise
+    let audioCtx = null;
+    let isRainPlaying = false;
+    let rainGain = null;
+
+    // DOM Elements
+    const timeDisplay = document.getElementById('timeDisplay');
+    const modeLabel = document.getElementById('modeLabel');
+    const startBtn = document.getElementById('startBtn');
+    const progressRing = document.getElementById('progressRing');
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const cycleDots = document.querySelectorAll('.cycle-dot');
+    const rainStatus = document.getElementById('rainStatus');
+
+    const CIRCUMFERENCE = 2 * Math.PI * 100; // Radius = 100
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function updateDisplay() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      
+      timeDisplay.textContent = formattedTime;
+      document.title = `${formattedTime} - ${MODES[currentMode].icon} Pomodoro`;
+
+      // Update Ring Offset
+      const progressRatio = timeLeft / totalTime;
+      const strokeDashoffset = CIRCUMFERENCE * (1 - progressRatio);
+      progressRing.style.strokeDashoffset = strokeDashoffset;
+    }
+
+    function switchMode(mode) {
+      if (isRunning) pauseTimer();
+      currentMode = mode;
+      totalTime = MODES[mode].time;
+      timeLeft = totalTime;
+
+      // Update Active Tab UI
+      tabBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.mode === mode);
+      });
+
+      modeLabel.innerHTML = MODES[mode].label;
+      updateDisplay();
+    }
+
+    function toggleTimer() {
+      initAudio();
+      if (isRunning) {
+        pauseTimer();
+      } else {
+        startTimer();
+      }
+    }
+
+    function startTimer() {
+      isRunning = true;
+      startBtn.textContent = 'PAUSE';
+      startBtn.style.background = '#e282a5';
+
+      timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateDisplay();
+        } else {
+          handleSessionComplete();
+        }
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      isRunning = false;
+      startBtn.textContent = 'START';
+      startBtn.style.background = 'var(--primary-pink)';
+      clearInterval(timerInterval);
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      timeLeft = totalTime;
+      updateDisplay();
+    }
+
+    function skipSession() {
+      pauseTimer();
+      if (currentMode === 'work') {
+        completedSessions = (completedSessions + 1) % 4;
+        updateTrackerUI();
+        switchMode(completedSessions === 0 ? 'longBreak' : 'shortBreak');
+      } else {
+        switchMode('work');
+      }
+    }
+
+    function handleSessionComplete() {
+      pauseTimer();
+      playChime();
+      triggerConfetti();
+
+      if (currentMode === 'work') {
+        completedSessions++;
+        updateTrackerUI();
+
+        if (completedSessions % 4 === 0) {
+          switchMode('longBreak');
+        } else {
+          switchMode('shortBreak');
+        }
+      } else {
+        switchMode('work');
+      }
+    }
+
+    function updateTrackerUI() {
+      cycleDots.forEach((dot, idx) => {
+        if (idx < completedSessions) {
+          dot.classList.add('completed');
+        } else {
+          dot.classList.remove('completed');
+        }
+      });
+    }
+
+    // Gentle Two-Tone Completion Chime Synthesizer
+    function playChime() {
+      if (!audioCtx) return;
+
+      const playNote = (freq, startTime, duration) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime + startTime);
+
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime + startTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + startTime + duration);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(audioCtx.currentTime + startTime);
+        osc.stop(audioCtx.currentTime + startTime + duration);
+      };
+
+      playNote(523.25, 0, 0.8); // C5
+      playNote(659.25, 0.2, 1.2); // E5
+      playNote(783.99, 0.4, 1.5); // G5
+    }
+
+    // Aesthetic Pastel Confetti
+    function triggerConfetti() {
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 40,
+          spread: 60,
+          origin: { y: 0.7 },
+          colors: ['#f8a5c2', '#fde2eb', '#f4ece1', '#e282a5']
+        });
+      }
+    }
+
+    // Soft Synth Rain Audio Generator
+    function toggleRainSound() {
+      initAudio();
+
+      if (isRainPlaying) {
+        if (rainGain) rainGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.2);
+        isRainPlaying = false;
+        rainStatus.textContent = 'Off';
+      } else {
+        // Generate Pink Noise for soothing rain background
+        const bufferSize = audioCtx.sampleRate * 2;
+        const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+
+        let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          let white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          b3 = 0.86650 * b3 + white * 0.3104856;
+          b4 = 0.55000 * b4 + white * 0.5329522;
+          b5 = -0.7616 * b5 - white * 0.0168980;
+          output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+          output[i] *= 0.04; 
+          b6 = white * 0.115926;
+        }
+
+        const whiteNoise = audioCtx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        // Filter for soft sound
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 800;
+
+        rainGain = audioCtx.createGain();
+        rainGain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+        rainGain.gain.setTargetAtTime(0.12, audioCtx.currentTime, 0.3);
+
+        whiteNoise.connect(filter);
+        filter.connect(rainGain);
+        rainGain.connect(audioCtx.destination);
+
+        whiteNoise.start();
+        isRainPlaying = true;
+        rainStatus.textContent = 'On';
+      }
+    }
+
+    // Initial setup
+    updateDisplay();
+  </script>
+</body>
+</html>
