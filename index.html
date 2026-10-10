@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro Timer</title>
+    <title>CoCo Focus</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-gradient: linear-gradient(135deg, #FFF0F5 0%, #FFE4E1 50%, #FFF5F7 100%);
+            --bg-gradient: linear-gradient(180deg, #FFF5F7 0%, #FFEBF0 50%, #FFF0F5 100%);
             --card-bg: #FFFFFF;
-            --primary: #FF8DA1;
-            --primary-hover: #FF758F;
-            --text-dark: #4A3E3D;
-            --text-muted: #9E8E8C;
-            --accent-pink: #FFEBF0;
-            --accent-border: #FFD1DC;
-            --shadow: 0 20px 40px rgba(255, 141, 161, 0.15);
+            --primary: #FF9EAA;
+            --text-dark: #5A4A49;
+            --text-muted: #B3A3A2;
+            --accent-pink: #FFF0F3;
+            --accent-border: #FFD6E0;
+            --shadow: 0 20px 40px rgba(255, 182, 193, 0.2);
         }
 
         * {
@@ -46,50 +45,49 @@
             position: relative;
         }
 
-        /* Top Header Navigation */
+        /* Top Bar with Icon-Only Settings Button */
         .top-bar {
             width: 100%;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8px;
+            justify-content: flex-end;
+            padding: 0 4px;
         }
 
-        .settings-btn {
+        .settings-icon-btn {
             background: var(--card-bg);
             border: 2px solid var(--accent-border);
             color: var(--text-dark);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 13px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 16px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.15);
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
             transition: all 0.2s ease;
         }
 
-        .settings-btn:active {
-            transform: scale(0.95);
+        .settings-icon-btn:active {
+            transform: scale(0.92);
         }
 
-        /* Title Area */
+        /* Title Header */
         .header {
             text-align: center;
             margin-bottom: 4px;
         }
 
         .header h1 {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 800;
             color: var(--text-dark);
             letter-spacing: -0.5px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .header p {
@@ -102,23 +100,23 @@
         /* Main Card */
         .card {
             background: var(--card-bg);
-            border-radius: 32px;
-            padding: 28px 20px;
+            border-radius: 36px;
+            padding: 28px 22px;
             width: 100%;
             box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 24px;
+            gap: 22px;
             border: 1px solid rgba(255, 255, 255, 0.8);
         }
 
-        /* Mode Tabs */
+        /* Mode Selector Tabs */
         .modes {
             display: flex;
             background: var(--accent-pink);
-            padding: 5px;
-            border-radius: 20px;
+            padding: 6px;
+            border-radius: 22px;
             width: 100%;
             gap: 4px;
         }
@@ -143,7 +141,7 @@
         .mode-btn.active {
             background: var(--card-bg);
             color: var(--text-dark);
-            box-shadow: 0 4px 12px rgba(255, 141, 161, 0.2);
+            box-shadow: 0 4px 12px rgba(255, 158, 170, 0.2);
         }
 
         /* Timer Circle */
@@ -187,7 +185,7 @@
         }
 
         .time {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 800;
             color: var(--text-dark);
             letter-spacing: -1px;
@@ -235,7 +233,7 @@
 
         .btn-main {
             flex: 1;
-            max-width: 180px;
+            max-width: 170px;
             height: 52px;
             background: var(--primary);
             color: white;
@@ -245,7 +243,7 @@
             font-weight: 800;
             letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 141, 161, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 158, 170, 0.4);
             transition: all 0.2s ease;
         }
 
@@ -253,14 +251,13 @@
             transform: scale(0.96);
         }
 
-        /* Divider */
         .divider {
             width: 100%;
             border-bottom: 2px dashed #F5E6E8;
             margin: 2px 0;
         }
 
-        /* Progress Section */
+        /* Progress Emojis - Vibrant & Clear */
         .progress-section {
             display: flex;
             flex-direction: column;
@@ -277,7 +274,6 @@
             text-transform: uppercase;
         }
 
-        /* Bright and Vibrant Progress Emojis */
         .progress-emojis {
             display: flex;
             gap: 12px;
@@ -285,10 +281,9 @@
         }
 
         .progress-emoji {
-            opacity: 0.3;
-            transform: scale(0.9);
+            opacity: 0.35;
+            transform: scale(0.92);
             transition: all 0.3s ease;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
         .progress-emoji.completed {
@@ -306,20 +301,20 @@
             font-weight: 700;
             color: var(--text-dark);
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(255, 182, 193, 0.1);
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        /* Settings Modal Pop-up */
+        /* Settings Modal Popup */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(90, 74, 73, 0.2);
             display: none;
             justify-content: center;
             align-items: center;
@@ -336,8 +331,8 @@
             border-radius: 28px;
             padding: 24px;
             width: 90%;
-            max-width: 340px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            max-width: 320px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -348,13 +343,14 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 800;
-            font-size: 18px;
+            font-size: 17px;
+            color: var(--text-dark);
         }
 
         .close-modal {
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             color: var(--text-muted);
         }
@@ -364,18 +360,20 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
+            color: var(--text-dark);
         }
 
         .setting-input-group input {
             width: 60px;
             padding: 6px 10px;
             border-radius: 12px;
-            border: 2px solid var(--accent-pink);
+            border: 2px solid var(--accent-border);
             text-align: center;
             font-weight: 700;
             font-size: 14px;
             outline: none;
+            color: var(--text-dark);
         }
 
         .save-settings-btn {
@@ -387,7 +385,7 @@
             font-weight: 800;
             cursor: pointer;
             font-size: 14px;
-            margin-top: 8px;
+            margin-top: 6px;
         }
     </style>
 </head>
@@ -395,19 +393,18 @@
 
     <div class="container">
         
-        <!-- Settings Bar -->
+        <!-- Top Bar with Cute Settings Icon -->
         <div class="top-bar">
-            <div></div>
-            <button class="settings-btn" id="openSettings">⚙️ Settings</button>
+            <button class="settings-icon-btn" id="openSettings">⚙️</button>
         </div>
 
         <!-- Header -->
         <div class="header">
-            <h1>🩰 Pomodoro Timer 🪽</h1>
+            <h1>🩰🪽 CoCo Focus 🪽</h1>
             <p>Aesthetic & Distraction-Free Study Sessions</p>
         </div>
 
-        <!-- Main Timer Card -->
+        <!-- Main Card -->
         <div class="card">
             
             <!-- Mode Selector -->
@@ -458,31 +455,30 @@
 
     </div>
 
-    <!-- Settings Modal -->
+    <!-- Settings Modal Pop-up -->
     <div class="modal-overlay" id="settingsModal">
         <div class="modal">
             <div class="modal-header">
-                <span>Timer Settings</span>
+                <span>Settings</span>
                 <button class="close-modal" id="closeSettings">✕</button>
             </div>
             <div class="setting-input-group">
-                <label>Focus (minutes)</label>
+                <label>Focus (mins)</label>
                 <input type="number" id="focusInput" value="25" min="1" max="60">
             </div>
             <div class="setting-input-group">
-                <label>Short Break (minutes)</label>
+                <label>Short Break (mins)</label>
                 <input type="number" id="shortInput" value="5" min="1" max="30">
             </div>
             <div class="setting-input-group">
-                <label>Long Break (minutes)</label>
+                <label>Long Break (mins)</label>
                 <input type="number" id="longInput" value="15" min="1" max="45">
             </div>
-            <button class="save-settings-btn" onclick="saveSettings()">Save Changes</button>
+            <button class="save-settings-btn" onclick="saveSettings()">Save</button>
         </div>
     </div>
 
     <script>
-        // Default Durations (in seconds)
         let durations = {
             focus: 25 * 60,
             short: 5 * 60,
@@ -498,14 +494,12 @@
         const CIRCLE_RADIUS = 100;
         const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS;
 
-        // DOM Elements
         const timeDisplay = document.getElementById('timeDisplay');
         const labelDisplay = document.getElementById('labelDisplay');
         const startBtn = document.getElementById('startBtn');
         const progressBar = document.getElementById('progressBar');
         const settingsModal = document.getElementById('settingsModal');
 
-        // Initialize progress bar dasharray
         progressBar.style.strokeDasharray = CIRCUMFERENCE;
 
         function updateDisplay() {
@@ -513,7 +507,6 @@
             const seconds = timeLeft % 60;
             timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
-            // Update progress circle
             const totalDuration = durations[currentMode];
             const offset = CIRCUMFERENCE - (timeLeft / totalDuration) * CIRCUMFERENCE;
             progressBar.style.strokeDashoffset = offset;
@@ -524,7 +517,6 @@
             currentMode = mode;
             timeLeft = durations[mode];
 
-            // Update mode buttons state
             const buttons = document.querySelectorAll('.mode-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
@@ -606,14 +598,12 @@
             }
         }
 
-        // Ambient Sound Toggle
         let isSoundOn = false;
         function toggleSound() {
             isSoundOn = !isSoundOn;
             document.getElementById('soundStatus').textContent = isSoundOn ? 'On 🎶' : 'Off';
         }
 
-        // Settings Modal Handlers
         document.getElementById('openSettings').onclick = () => settingsModal.classList.add('active');
         document.getElementById('closeSettings').onclick = () => settingsModal.classList.remove('active');
 
@@ -630,7 +620,6 @@
             resetTimer();
         }
 
-        // Initial setup
         updateDisplay();
     </script>
 </body>
